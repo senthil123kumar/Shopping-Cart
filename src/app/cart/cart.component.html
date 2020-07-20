@@ -1,0 +1,61 @@
+<h1 class="title">Welcome to our {{title}}</h1>
+<mat-toolbar color="primary">
+  <div fxFlex fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-form-field>
+      <mat-label>
+        <mat-icon> search</mat-icon>Search
+      </mat-label>
+      <input matInput name="search" [(ngModel)]="searchText" placeholder="Search">
+    </mat-form-field>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="end end">
+    <button mat-icon-button [disabled]="badgeCount ==0 ? true : false" (click)="AddtoCartComponent()">
+      <mat-icon class="icon">shopping_cart</mat-icon>
+      <span class="badge"  *ngIf="badgeCount > 0">{{badgeCount}}</span>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-chip-list class="sort-top" fxLayout="row" fxLayoutAlign="center center">
+  <label>Sort By</label>
+  <span *ngIf="key === 'name'">
+    <span *ngIf="!reverse">
+      <mat-icon>arrow_upward</mat-icon>
+    </span>
+    <span *ngIf="reverse">
+      <mat-icon>arrow_downward</mat-icon>
+    </span>
+  </span>
+  <mat-chip (click)="sortList('name')">Name</mat-chip>
+  <span *ngIf="key === 'price'">
+    <span *ngIf="!reverse">
+      <mat-icon>arrow_upward</mat-icon>
+    </span>
+    <span *ngIf="reverse">
+      <mat-icon>arrow_downward</mat-icon>
+    </span>
+  </span>
+  <mat-chip (click)="sortList('price')">Price</mat-chip>
+</mat-chip-list>
+
+<div fxLayout="row" fxLayout.xs="column" fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+  <mat-card class="card-container" *ngFor="let product of products | filter:searchText | sort : key: reverse">
+    <img mat-card-image src="{{product.img_url}}" alt="{{product.name}}">
+    <mat-card-subtitle>{{ product.name }}</mat-card-subtitle>
+    <mat-card-content>
+      <div fxLayout="row">
+        <h4 fxFlex fxLayoutAlign="space-between start">
+          {{ product.price - product.discount | currency: 'INR':true:'2.0' }}</h4>
+        <h4 fxFlex fxLayoutAlign="center center" class="strikeNo">{{ product.price  }}</h4>
+        <h4 fxFlex fxLayoutAlign="end end" class="color">{{ product.discount/product.price *100  | number:'1.1-1' }} %
+          off</h4>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+
+        <button mat-flat-button color="accent" (click)="AddtoCart(product)">
+          <mat-icon>add_shopping_cart</mat-icon> ADD TO CART
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

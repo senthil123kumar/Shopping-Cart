@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+    <h3>Cart Items</h3>
+    <button fxFlex fxLayout="row" fxLayoutAlign="end end" mat-icon-button [mat-dialog-close]>
+        <mat-icon>cancel</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-dialog-content>
+    <mat-card class="top" *ngFor="let item of CartItem">
+        <h3>{{ item.name }}<br />
+        <strong>{{ item.price-item.discount }}</strong>
+        </h3>
+    </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button fxFlex fxLayout="row" fxLayoutAlign="end end" mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,40 @@
+.title{
+  text-align: center;
+  padding-top:10px;
+  font-family:'Comic Sans MS'
+}
+
+.card-container {
+  width: 200px;
+  margin: 5px 8px;
+}
+
+mat-card-subtitle {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  height: 2rem;
+}
+.sort-top{
+  margin: 8px 0px 5px 0px;
+}
+
+img {
+  height: 220px;
+}
+.strikeNo{
+  text-decoration: line-through;
+  color:darkgray;
+}
+.color{
+  color: darkgreen;
+}
+
+.badge {
+  position: absolute;
+  left: 50%;
+  line-height: 13px;
+  border-radius: 50%;
+  width: 13px;
+  background-color: #ff0000; 
+  border: 4px solid #ff0000;
+}
